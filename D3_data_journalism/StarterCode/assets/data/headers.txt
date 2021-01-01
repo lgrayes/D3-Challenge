@@ -1,0 +1,29 @@
+id
+state,
+abbr,
+poverty,
+povertyMoe,
+age,
+ageMoe,
+income,
+incomeMoe,
+healthcare,
+healthcareLow,
+healthcareHigh,
+obesity,
+obesityLow,
+obesityHigh,
+smokes,
+smokesLow,
+smokesHigh,
+-0.385218228
+
+X VALUES
+In Poverty (%)
+Age (Median)
+Household Income (Median)
+
+Y VALUES
+Obese (%)
+Smokes (%)
+Lacks Healthcare (%)
