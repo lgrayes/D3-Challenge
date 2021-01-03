@@ -18,6 +18,21 @@ smokesLow,
 smokesHigh,
 -0.385218228
 
+========
+
+charts only
+
+x
+In Poverty (%)
+poverty
+
+y
+Lacks Healthcare (%)
+healthcare
+
+========
+
+
 X VALUES
 In Poverty (%)
 Age (Median)
@@ -27,3 +42,47 @@ Y VALUES
 Obese (%)
 Smokes (%)
 Lacks Healthcare (%)
+
+========
+
+
+.tooltip {
+  position: absolute;
+  width: 135px;
+  height: 60px;
+  padding: 6px;
+  padding-top: 8px;
+  font: 12px sans-serif;
+  color: white;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.8);
+  border: 0;
+  border-radius: 10px;
+}
+
+========
+
+.axis-text {
+  font-family: sans-serif;
+  font-weight: bold;
+  fill: black;
+  text-anchor: middle;
+}
+
+========
+
+hairLengthLabel
+povertyLabel
+163
+219
+227
+
+albumsLabel
+ageLabel
+170
+216
+224
+
+========
+
+
