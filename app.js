@@ -155,6 +155,13 @@ d3.csv("d3data.csv").then(function (d3data, err) {
     .attr("fill", "lightblue")
     .attr("opacity", "0.5");
 
+    /*
+    .append("text").text(
+      function(d){
+        return d.abbr;
+      }
+    );
+*/
     
 
   // Create group for two x-axis labels
