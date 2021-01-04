@@ -25,7 +25,6 @@ var chartGroup = svg.append("g")
 
 // Initial Params
 var chosenXAxis = "poverty";
-var chosenYAxis = "healthcare";
 
 // function used for updating x-scale var upon click on axis label
 function xScale(d3data, chosenXAxis) {
@@ -42,6 +41,7 @@ function xScale(d3data, chosenXAxis) {
     .range([0, width]);
 
   return xLinearScale;
+
 }
 
 // function used for updating xAxis var upon click on axis label
@@ -60,11 +60,9 @@ function renderCircles(circlesGroup, newXScale, chosenXAxis) {
 
   circlesGroup.transition()
     .duration(1000)
+    // .text(function(d){return d.abbr})
     .attr("cx", function (d) { 
-      return newXScale(d[chosenXAxis])
-    /* .text(function(d){
-      return d.abbr});
-      */
+      return newXScale(d[chosenXAxis]);
     });
 
   return circlesGroup;
@@ -89,7 +87,7 @@ function updateToolTip(chosenXAxis, circlesGroup) {
     .attr("class", "tooltip")
     .offset([80, -60])
     .html(function (d) {
-      return (`${d.state}<br>${label} ${d[chosenXAxis]}<br>Healthcare:  ${d[chosenYAxis]}`);
+      return (`${d.state}<br>${label} ${d[chosenXAxis]}`);
     });
 
   circlesGroup.call(toolTip);
@@ -139,7 +137,7 @@ d3.csv("d3data.csv").then(function (d3data, err) {
     .classed("x-axis", true)
     .attr("transform", `translate(0, ${height})`)
     .call(bottomAxis);
-    // .text("x-axis", function(d){return d.abbr});
+    // .text(function(d){return d.abbr});
 
   // append y axis
   chartGroup.append("g")
@@ -161,7 +159,7 @@ d3.csv("d3data.csv").then(function (d3data, err) {
     .attr("fill", "lightblue")
     .attr("opacity", "0.5");
 
-/*
+    /*
     .append("text").text(
       function(d){
         return d.abbr;
