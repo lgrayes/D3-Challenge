@@ -55,20 +55,20 @@ function renderAxes(newXScale, xAxis) {
   return xAxis;
 }
 
-// function used for updating circles group with a transition to new circles
+// // function used for updating circles group with a transition to new circles
 function renderCircles(circlesGroup, newXScale, chosenXAxis) {
 
   circlesGroup.transition()
     .duration(1000)
     .attr("cx", function (d) { 
-      return newXScale(d[chosenXAxis])
-    /* .text(function(d){
-      return d.abbr});
-      */
-    });
+      return newXScale(d[chosenXAxis]);
+    //.append.text(function(d){
+    //   return d.abbr});
+    })
 
   return circlesGroup;
 }
+
 
 // function used for updating circles group with new tooltip
 function updateToolTip(chosenXAxis, circlesGroup) {
@@ -139,17 +139,49 @@ d3.csv("d3data.csv").then(function (d3data, err) {
     .classed("x-axis", true)
     .attr("transform", `translate(0, ${height})`)
     .call(bottomAxis);
-    // .text("x-axis", function(d){return d.abbr});
+    // .text(function(d) {return d.abbr; });
 
   // append y axis
   chartGroup.append("g")
     .call(leftAxis);
     // .text(function(d){return d.abbr});
+/*
+  // // append initial circles
+    var circlesGroup = chartGroup.selectAll("g circle")
+    .data(d3data)
+    .enter();
 
-  // append initial circles
+    circlesGroup
+    .append("circle")
+    .classed("stateCircle", true)
+    .attr("cx", function(d) { 
+      return xLinearScale(d[chosenXAxis]);
+    })
+    .attr("cy", function(d) { 
+      return yLinearScale(d.healthcare);
+    })
+    .attr("r", 12);
+
+    circlesGroup
+    .append("text")
+    .classed("stateText", true)
+    .attr("dx", function(d) { 
+      return xLinearScale(d[chosenXAxis]);
+    })
+    .attr("dy", function(d) { 
+      return yLinearScale(d.healthcare);
+    })
+    .text(function (d) {
+      return d.abbr;
+    	})
+    .attr("text-size", 5);
+
+*/
+  // // append initial circles
   var circlesGroup = chartGroup.selectAll("circle")
     .data(d3data)
     .enter()
+
     .append("circle")
     .attr("cx", function(d) { 
       return xLinearScale(d[chosenXAxis]);
@@ -161,12 +193,13 @@ d3.csv("d3data.csv").then(function (d3data, err) {
     .attr("fill", "lightblue")
     .attr("opacity", "0.5");
 
-/*
+/*    
     .append("text").text(
       function(d){
         return d.abbr;
       }
     );
+
 
     ADD TEXT AFTER STYLE?? VIDEO 2
 

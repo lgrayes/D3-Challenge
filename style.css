@@ -57,3 +57,14 @@
   fill: #000;
   cursor: pointer;
 }
+
+.stateText {
+  font-family: sans-serif;
+  fill: #fff;
+  text-anchor: middle;
+}
+
+.stateCircle {
+  fill: #89bdd3;
+  stroke: #e3e3e3;
+}
