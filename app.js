@@ -66,6 +66,14 @@ function renderCircles(circlesGroup, newXScale, chosenXAxis) {
     //   return d.abbr});
     })
 
+  d3.selectAll("g text").each(function(){
+    d3.select(this)
+    .transition()
+    .duration(1000)
+    .attr("dx", function (d) { 
+      return newXScale(d[chosenXAxis]);
+    })
+  })
   return circlesGroup;
 }
 
@@ -146,7 +154,6 @@ d3.csv("d3data.csv").then(function (d3data, err) {
     .call(leftAxis);
     // .text(function(d){return d.abbr});
 
-    
   // // append initial circles
     var circlesGroup = chartGroup.selectAll("g circle")
     .data(d3data)
@@ -155,6 +162,7 @@ d3.csv("d3data.csv").then(function (d3data, err) {
     circlesGroup
     .append("circle")
     .classed("stateCircle", true)
+    .classed("movingGroup", true)
     .attr("cx", function(d) { 
       return xLinearScale(d[chosenXAxis]);
     })
@@ -166,6 +174,7 @@ d3.csv("d3data.csv").then(function (d3data, err) {
     circlesGroup
     .append("text")
     .classed("stateText", true)
+    .classed("movingGroup", true)
     .attr("dx", function(d) { 
       return xLinearScale(d[chosenXAxis]);
     })
@@ -175,7 +184,7 @@ d3.csv("d3data.csv").then(function (d3data, err) {
     .text(function (d) {
       return d.abbr;
     	})
-    .attr("text-size", 5);
+    .attr("text-size", 3);
 
 
   // // // append initial circles
@@ -248,7 +257,9 @@ d3.csv("d3data.csv").then(function (d3data, err) {
     .text("Lacks Healthcare (%)");
 
   // updateToolTip function above csv import
-  var circlesGroup = updateToolTip(chosenXAxis, circlesGroup);
+  // var circlesGroup = updateToolTip(chosenXAxis, circlesGroup);
+
+  var circlesGroup = updateToolTip(chosenXAxis, d3.selectAll("circle"));
 
   // x axis labels event listener
   labelsGroup.selectAll("text")
