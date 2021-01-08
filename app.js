@@ -145,7 +145,8 @@ d3.csv("d3data.csv").then(function (d3data, err) {
   chartGroup.append("g")
     .call(leftAxis);
     // .text(function(d){return d.abbr});
-/*
+
+    
   // // append initial circles
     var circlesGroup = chartGroup.selectAll("g circle")
     .data(d3data)
@@ -176,22 +177,22 @@ d3.csv("d3data.csv").then(function (d3data, err) {
     	})
     .attr("text-size", 5);
 
-*/
-  // // append initial circles
-  var circlesGroup = chartGroup.selectAll("circle")
-    .data(d3data)
-    .enter()
 
-    .append("circle")
-    .attr("cx", function(d) { 
-      return xLinearScale(d[chosenXAxis]);
-    })
-    .attr("cy", function(d) { 
-      return yLinearScale(d.healthcare);
-    })
-    .attr("r", 10)
-    .attr("fill", "lightblue")
-    .attr("opacity", "0.5");
+  // // // append initial circles
+  // var circlesGroup = chartGroup.selectAll("circle")
+  //   .data(d3data)
+  //   .enter()
+
+  //   .append("circle")
+  //   .attr("cx", function(d) { 
+  //     return xLinearScale(d[chosenXAxis]);
+  //   })
+  //   .attr("cy", function(d) { 
+  //     return yLinearScale(d.healthcare);
+  //   })
+  //   .attr("r", 10)
+  //   .attr("fill", "lightblue")
+  //   .attr("opacity", "0.5");
 
 /*    
     .append("text").text(
