@@ -25,7 +25,6 @@ var chartGroup = svg.append("g")
 
 // Initial Params
 var chosenXAxis = "poverty";
-var chosenYAxis = "healthcare";
 
 // function used for updating x-scale var upon click on axis label
 function xScale(d3data, chosenXAxis) {
@@ -74,6 +73,7 @@ function renderCircles(circlesGroup, newXScale, chosenXAxis) {
       return newXScale(d[chosenXAxis]);
     })
   })
+  
   return circlesGroup;
 }
 
@@ -184,7 +184,7 @@ d3.csv("d3data.csv").then(function (d3data, err) {
     .text(function (d) {
       return d.abbr;
     	})
-    .attr("text-size", 3);
+    .attr("text-size", 4);
 
 
   // // // append initial circles
@@ -311,6 +311,9 @@ d3.csv("d3data.csv").then(function (d3data, err) {
           incomeLabel
             .classed("active", true)
             .classed("inactive", false);
+          povertyLabel
+            .classed("active", false)
+            .classed("inactive", true);
         }
         else {
           ageLabel
